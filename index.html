@@ -10,16 +10,17 @@
 <body>
     <div id="app"></div>
     <script type="module">
+        import { registerApplication, start } from './single-spa/single-spa.js'
         let app1 = {
-            bootstrap: async () => {
-                console.log('app1 bootstrap')
+            bootstrap: async (props) => {
+                console.log('app1 bootstrap', props)
             },
             mount: [
-                async () => {
-                    console.log('app1 mount')
+                async (props) => {
+                    console.log('app1 mount', props)
                 },
-                async () => {
-                    console.log('app1 mount2')
+                async (props) => {
+                    console.log('app1 mount2', props)
                 }
             ],
             unmount: async () => {
@@ -37,8 +38,8 @@
                 console.log('app2 unmount')
             }
         }
-        registerApplication('app1', app1, () => true)
-        registerApplication('app2', app2, () => true)
+        registerApplication('app1', app1, () => true, {a:1})
+        registerApplication('app2', app2, () => true, {a:2})
         start()
     </script>
 </body>

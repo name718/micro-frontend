@@ -1,2 +1,2 @@
-import { registerApplication } from './application/app'
-import { start } from './start'
+export { registerApplication } from './application/app'
+export { start } from './start'
